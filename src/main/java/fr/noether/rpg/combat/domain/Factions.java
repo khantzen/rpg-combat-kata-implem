@@ -36,9 +36,7 @@ public class Factions {
     }
 
     Factions remove(Faction toRemove) {
-        List<Faction> collect = factions.stream()
-                .filter(faction -> !faction.equals(toRemove))
-                .collect(toList());
-        return new Factions(collect);
+        factions.remove(toRemove);
+        return new Factions(factions);
     }
 }
