@@ -3,7 +3,7 @@ package fr.noether.rpg.combat.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class TestCharacter {
+public class CharacterShould {
 
     @Test
     public void start_with_1000_health() {
