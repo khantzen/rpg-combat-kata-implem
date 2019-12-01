@@ -22,4 +22,11 @@ public class TestCharacter {
         Character character = new Character();
         Assertions.assertThat(character.isAlive()).isTrue();
     }
+
+    @Test
+    public void is_dead_when_health_drops_to_O() {
+        Character character = new Character();
+        character.takeDamage(Damage.of(1001));
+        Assertions.assertThat(character.isAlive()).isFalse();
+    }
 }
