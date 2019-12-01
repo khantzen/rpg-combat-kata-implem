@@ -37,6 +37,10 @@ public class Fighter {
             return;
         }
 
+        if (this.isAlliedTo(target)) {
+            return;
+        }
+
         Distance distanceBetweenAttackerAndTarget =
                 this.position.distanceFrom(target.position);
 
@@ -44,6 +48,10 @@ public class Fighter {
             float damageModifier = Level.modifier(level, target.level);
             target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
         }
+    }
+
+    private boolean isAlliedTo(Fighter target) {
+        return this.factions.hasCommonWith(target.factions);
     }
 
     public void join(Faction faction) {

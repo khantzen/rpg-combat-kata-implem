@@ -39,4 +39,11 @@ public class Factions {
         factions.remove(toRemove);
         return new Factions(factions);
     }
+
+    public boolean hasCommonWith(Factions target) {
+        long count = this.factions.stream()
+                .filter(target.factions::contains)
+                .count();
+        return count != 0;
+    }
 }
