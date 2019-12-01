@@ -3,28 +3,28 @@ package fr.noether.rpg.combat.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class CharacterDamage {
+public class FighterDamage {
 
     @Test
     public void can_be_inflicted_to_another_character() {
-        Character john = new Character();
-        Character louis = new Character();
+        Fighter john = new Fighter();
+        Fighter louis = new Fighter();
         john.attack(louis);
         Assertions.assertThat(louis.health).isEqualTo(Health.of(900));
     }
 
     @Test
     public void cannot_be_inflicted_to_character_himself() {
-        Character john = new Character();
+        Fighter john = new Fighter();
         john.attack(john);
         Assertions.assertThat(john.health).isEqualTo(Health.of(1000));
     }
 
     @Test
     public void are_half_reduced_when_target_has_5_or_more_level_than_attacker() {
-        Character john = new Character();
+        Fighter john = new Fighter();
         john.level = Level.of(10);
-        Character louis = new Character();
+        Fighter louis = new Fighter();
         louis.level = Level.of(15);
 
         john.attack(louis);
@@ -33,9 +33,9 @@ public class CharacterDamage {
 
     @Test
     public void are_doubled_when_target_has_5_or_less_level_than_attacker() {
-        Character john = new Character();
+        Fighter john = new Fighter();
         john.level = Level.of(15);
-        Character louis = new Character();
+        Fighter louis = new Fighter();
         louis.level = Level.of(9);
 
         john.attack(louis);

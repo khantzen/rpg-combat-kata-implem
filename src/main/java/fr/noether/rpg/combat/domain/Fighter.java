@@ -1,10 +1,10 @@
 package fr.noether.rpg.combat.domain;
 
-public class Character {
+public class Fighter {
     public Health health;
     public Level level;
 
-    public Character() {
+    public Fighter() {
         this.health = Health.THOUSAND;
         this.level = Level.ONE;
     }
@@ -22,7 +22,7 @@ public class Character {
         this.health = Health.minimumOf(Health.THOUSAND, this.health.add(heal));
     }
 
-    public void attack(Character target) {
+    public void attack(Fighter target) {
         if (this != target) {
             float damageModifier = Level.modifier(level, target.level);
             target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
