@@ -46,7 +46,7 @@ public class FighterShould {
     }
 
     @Test
-    public void cannot_be_healed_over_1000() {
+    public void not_be_healed_over_1000() {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(200));
         fighter.receiveHeal(Health.of(300));
@@ -54,7 +54,7 @@ public class FighterShould {
     }
 
     @Test
-    public void cannot_be_healed_when_dead() {
+    public void not_be_healed_when_dead() {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(1300));
         fighter.receiveHeal(Health.of(300));
