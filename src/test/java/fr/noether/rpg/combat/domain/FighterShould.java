@@ -1,40 +1,41 @@
 package fr.noether.rpg.combat.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FighterShould {
 
     @Test
     public void start_with_1000_health() {
         Fighter fighter = new Fighter(Distance.of(2));
-        Assertions.assertThat(fighter.health).isEqualTo(Health.of(1000));
+        assertThat(fighter.health).isEqualTo(Health.of(1000));
     }
 
     @Test
     public void start_at_level_01() {
         Fighter fighter = new Fighter(Distance.of(2));
-        Assertions.assertThat(fighter.level).isEqualTo(Level.ONE);
+        assertThat(fighter.level).isEqualTo(Level.ONE);
     }
 
     @Test
     public void is_alive_when_health_greater_than_0() {
         Fighter fighter = new Fighter(Distance.of(2));
-        Assertions.assertThat(fighter.isAlive()).isTrue();
+        assertThat(fighter.isAlive()).isTrue();
     }
 
     @Test
     public void is_dead_when_health_drops_to_O() {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(1001));
-        Assertions.assertThat(fighter.isAlive()).isFalse();
+        assertThat(fighter.isAlive()).isFalse();
     }
 
     @Test
     public void has_health_remove_when_he_receive_damage() {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(342));
-        Assertions.assertThat(fighter.health).isEqualTo(Health.of(658));
+        assertThat(fighter.health).isEqualTo(Health.of(658));
     }
 
     @Test
@@ -42,7 +43,7 @@ public class FighterShould {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(300));
         fighter.receiveHeal(Health.of(200));
-        Assertions.assertThat(fighter.health).isEqualTo(Health.of(900));
+        assertThat(fighter.health).isEqualTo(Health.of(900));
     }
 
     @Test
@@ -50,7 +51,7 @@ public class FighterShould {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(200));
         fighter.receiveHeal(Health.of(300));
-        Assertions.assertThat(fighter.health).isEqualTo(Health.of(1000));
+        assertThat(fighter.health).isEqualTo(Health.of(1000));
     }
 
     @Test
@@ -58,7 +59,7 @@ public class FighterShould {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.takeDamage(Damage.of(1300));
         fighter.receiveHeal(Health.of(300));
-        Assertions.assertThat(fighter.isAlive()).isFalse();
+        assertThat(fighter.isAlive()).isFalse();
     }
 
     @Test
@@ -66,8 +67,8 @@ public class FighterShould {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.join(Faction.of("Unit"));
         fighter.join(Faction.of("Test"));
-        Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
-        Assertions.assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
+        assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
+        assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
     }
 
     @Test
@@ -76,8 +77,8 @@ public class FighterShould {
         fighter.join(Faction.of("Unit"));
         fighter.join(Faction.of("Test"));
         fighter.leave(Faction.of("Unit"));
-        Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isFalse();
-        Assertions.assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
+        assertThat(fighter.factions.contains(Faction.of("Unit"))).isFalse();
+        assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
     }
 
     @Test
@@ -85,8 +86,8 @@ public class FighterShould {
         Fighter fighter = new Fighter(Distance.of(2));
         fighter.join(Faction.of("Unit"));
         fighter.join(Faction.of("Unit"));
-        Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
-        Assertions.assertThat(fighter.factions.size()).isEqualTo(1);
+        assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
+        assertThat(fighter.factions.size()).isEqualTo(1);
     }
 
     @Test
@@ -104,7 +105,7 @@ public class FighterShould {
         john.heal(louis);
         john.heal(henry);
 
-        Assertions.assertThat(louis.health).isEqualTo(Health.of(800));
-        Assertions.assertThat(henry.health).isEqualTo(Health.of(645));
+        assertThat(louis.health).isEqualTo(Health.of(800));
+        assertThat(henry.health).isEqualTo(Health.of(645));
     }
 }

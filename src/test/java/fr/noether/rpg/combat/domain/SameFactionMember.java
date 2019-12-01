@@ -1,7 +1,8 @@
 package fr.noether.rpg.combat.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SameFactionMember {
 
@@ -15,7 +16,7 @@ public class SameFactionMember {
 
         john.attack(louis);
 
-        Assertions.assertThat(louis.health).isEqualTo(Health.of(1000));
+        assertThat(louis.health).isEqualTo(Health.of(1000));
     }
 
     @Test
@@ -30,6 +31,6 @@ public class SameFactionMember {
 
         john.heal(louis);
 
-        Assertions.assertThat(louis.health).isEqualTo(Health.of(800));
+        assertThat(louis.health).isEqualTo(Health.of(800));
     }
 }

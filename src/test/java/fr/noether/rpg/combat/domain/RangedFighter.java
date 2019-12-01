@@ -1,7 +1,8 @@
 package fr.noether.rpg.combat.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RangedFighter {
     @Test
@@ -13,7 +14,7 @@ public class RangedFighter {
         louis.position = Coord.of(39);
 
         john.attack(louis);
-        Assertions.assertThat(louis.health).isEqualTo(Health.of(1000));
+        assertThat(louis.health).isEqualTo(Health.of(1000));
     }
 
     @Test
@@ -24,6 +25,6 @@ public class RangedFighter {
         louis.position = Coord.of(18);
 
         john.attack(louis);
-        Assertions.assertThat(louis.health).isEqualTo(Health.of(900));
+        assertThat(louis.health).isEqualTo(Health.of(900));
     }
 }
