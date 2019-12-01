@@ -88,4 +88,23 @@ public class FighterShould {
         Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
         Assertions.assertThat(fighter.factions.size()).isEqualTo(1);
     }
+
+    @Test
+    public void not_be_able_to_heal_an_ennemy_target() {
+        Fighter john = new Melee();
+        Fighter louis = new Melee();
+        Fighter henry = new Ranged();
+
+        john.join(Faction.of("Unit"));
+        louis.join(Faction.of("Test"));
+
+        louis.takeDamage(Damage.of(200));
+        henry.takeDamage(Damage.of(355));
+
+        john.heal(louis);
+        john.heal(henry);
+
+        Assertions.assertThat(louis.health).isEqualTo(Health.of(800));
+        Assertions.assertThat(henry.health).isEqualTo(Health.of(645));
+    }
 }
