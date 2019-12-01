@@ -14,7 +14,7 @@ public class Fighter {
         this.level = Level.ONE;
         this.range = range;
         this.position = Coord.of(0);
-        this.factions = Factions.EMPTY;
+        this.factions = Factions.empty();
     }
 
     public boolean isAlive() {

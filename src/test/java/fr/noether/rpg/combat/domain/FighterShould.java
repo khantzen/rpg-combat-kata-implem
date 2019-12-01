@@ -79,4 +79,13 @@ public class FighterShould {
         Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isFalse();
         Assertions.assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
     }
+
+    @Test
+    public void not_join_the_same_faction_twice() {
+        Fighter fighter = new Fighter(Distance.of(2));
+        fighter.join(Faction.of("Unit"));
+        fighter.join(Faction.of("Unit"));
+        Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
+        Assertions.assertThat(fighter.factions.size()).isEqualTo(1);
+    }
 }

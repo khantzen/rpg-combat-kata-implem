@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Faction {
     private final String name;
 
-    Faction(String name) {
+    private Faction(String name) {
         this.name = name;
     }
 

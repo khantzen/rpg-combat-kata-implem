@@ -1,17 +1,21 @@
 package fr.noether.rpg.combat.domain;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Factions {
-    static final Factions EMPTY = new Factions(new ArrayList<>());
+    private final HashSet<Faction> factions;
 
-    private final List<Faction> factions;
-
-    private Factions(List<Faction> factions) {
+    private Factions(HashSet<Faction> factions) {
         this.factions = factions;
+    }
+
+    private static Factions of(Set<Factions> factions) {
+        return new Factions(new HashSet<>());
+    }
+
+    static Factions empty() {
+        return Factions.of(new HashSet<>());
     }
 
     boolean haveCommonWith(Factions target) {
@@ -20,10 +24,6 @@ public class Factions {
 
     public int size() {
         return factions.size();
-    }
-
-    public boolean isEmpty() {
-        return this.equals(EMPTY);
     }
 
     public boolean contains(Faction target) {
