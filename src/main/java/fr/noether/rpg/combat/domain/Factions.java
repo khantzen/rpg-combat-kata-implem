@@ -1,6 +1,7 @@
 package fr.noether.rpg.combat.domain;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -32,5 +33,12 @@ public class Factions {
     Factions append(Faction faction) {
         factions.add(faction);
         return new Factions(factions);
+    }
+
+    Factions remove(Faction toRemove) {
+        List<Faction> collect = factions.stream()
+                .filter(faction -> !faction.equals(toRemove))
+                .collect(toList());
+        return new Factions(collect);
     }
 }

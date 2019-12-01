@@ -69,4 +69,14 @@ public class FighterShould {
         Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isTrue();
         Assertions.assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
     }
+
+    @Test
+    public void be_able_to_leave_one_faction() {
+        Fighter fighter = new Fighter(Distance.of(2));
+        fighter.join(Faction.of("Unit"));
+        fighter.join(Faction.of("Test"));
+        fighter.leave(Faction.of("Unit"));
+        Assertions.assertThat(fighter.factions.contains(Faction.of("Unit"))).isFalse();
+        Assertions.assertThat(fighter.factions.contains(Faction.of("Test"))).isTrue();
+    }
 }

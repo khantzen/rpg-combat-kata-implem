@@ -49,4 +49,8 @@ public class Fighter {
     public void join(Faction faction) {
         this.factions = this.factions.append(faction);
     }
+
+    public void leave(Faction faction) {
+        this.factions = this.factions.remove(faction);
+    }
 }
