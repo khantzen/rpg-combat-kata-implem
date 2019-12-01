@@ -2,18 +2,19 @@ package fr.noether.rpg.combat.domain;
 
 public class Fighter {
     private final Distance range;
+    public Factions factions;
     public Health health;
     public Level level;
     public Coord position;
 
     public Fighter(
-            Distance range,
-            Factions unit
+            Distance range
     ) {
         this.health = Health.THOUSAND;
         this.level = Level.ONE;
         this.range = range;
         this.position = Coord.of(0);
+        this.factions = Factions.EMPTY;
     }
 
     public boolean isAlive() {
@@ -43,5 +44,9 @@ public class Fighter {
             float damageModifier = Level.modifier(level, target.level);
             target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
         }
+    }
+
+    public void join(Faction faction) {
+        this.factions = this.factions.append(faction);
     }
 }
