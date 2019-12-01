@@ -1,13 +1,12 @@
 package fr.noether.rpg.combat.domain;
 
-import java.util.logging.Level;
-
 public class Character {
     public Health health;
     public Level level;
 
     public Character() {
         this.health = Health.THOUSAND;
+        this.level = Level.ONE;
     }
 
     public boolean isAlive() {
@@ -25,7 +24,8 @@ public class Character {
 
     public void attack(Character target) {
         if (this != target) {
-            target.takeDamage(Damage.HUNDRED);
+            float damageModifier = Level.modifier(level, target.level);
+            target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
         }
     }
 }

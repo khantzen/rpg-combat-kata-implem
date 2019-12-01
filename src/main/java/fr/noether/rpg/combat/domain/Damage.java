@@ -15,4 +15,8 @@ public class Damage {
     Health toHealth() {
         return Health.of(value);
     }
+
+    public Damage applyModifier(float damageModifier) {
+        return Damage.of((int) (value * damageModifier));
+    }
 }
