@@ -19,6 +19,7 @@ public class TestCharacter {
 
     @Test
     public void is_alive_when_health_greater_than_0() {
-
+        Character character = new Character();
+        Assertions.assertThat(character.isAlive()).isTrue();
     }
 }
