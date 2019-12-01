@@ -21,6 +21,10 @@ public class Level {
             modifier = 0.5f;
         }
 
+        if (attacker.level - defender.level >= 5) {
+            modifier = 2f;
+        }
+
         return modifier;
     }
 

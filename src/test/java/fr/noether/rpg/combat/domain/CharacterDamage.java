@@ -21,7 +21,7 @@ public class CharacterDamage {
     }
 
     @Test
-    public void are_half_reduced_when_target_has_5_more_level_than_attacker() {
+    public void are_half_reduced_when_target_has_5_or_more_level_than_attacker() {
         Character john = new Character();
         john.level = Level.of(10);
         Character louis = new Character();
@@ -29,5 +29,16 @@ public class CharacterDamage {
 
         john.attack(louis);
         Assertions.assertThat(louis.health).isEqualTo(Health.of(950));
+    }
+
+    @Test
+    public void are_doubled_when_target_has_5_or_less_level_than_attacker() {
+        Character john = new Character();
+        john.level = Level.of(15);
+        Character louis = new Character();
+        louis.level = Level.of(9);
+
+        john.attack(louis);
+        Assertions.assertThat(louis.health).isEqualTo(Health.of(800));
     }
 }
