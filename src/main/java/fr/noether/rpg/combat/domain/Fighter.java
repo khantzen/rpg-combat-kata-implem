@@ -26,6 +26,16 @@ public class Fighter {
         this.health = this.health.remove(healthToRemove);
     }
 
+    public void heal(Fighter target) {
+        if (this == target) {
+            this.receiveHeal(Health.HUNDRED);
+        }
+
+        if (this.isAlliedTo(target)) {
+            target.receiveHeal(Health.HUNDRED);
+        }
+    }
+
     public void receiveHeal(Health heal) {
         if (this.isAlive()) {
             this.health = Health.minimumOf(Health.THOUSAND, this.health.add(heal));
@@ -33,11 +43,7 @@ public class Fighter {
     }
 
     public void attack(Fighter target) {
-        if (this == target) {
-            return;
-        }
-
-        if (this.isAlliedTo(target)) {
+        if (this == target || this.isAlliedTo(target)) {
             return;
         }
 

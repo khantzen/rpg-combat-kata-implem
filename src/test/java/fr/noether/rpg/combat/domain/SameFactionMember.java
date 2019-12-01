@@ -1,7 +1,6 @@
 package fr.noether.rpg.combat.domain;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class SameFactionMember {
@@ -17,5 +16,20 @@ public class SameFactionMember {
         john.attack(louis);
 
         Assertions.assertThat(louis.health).isEqualTo(Health.of(1000));
+    }
+
+    @Test
+    public void should_be_able_to_heal_each_other() {
+        Fighter john = new Melee();
+        Fighter louis = new Melee();
+
+        louis.takeDamage(Damage.of(300));
+
+        john.join(Faction.of("Unit"));
+        louis.join(Faction.of("Unit"));
+
+        john.heal(louis);
+
+        Assertions.assertThat(louis.health).isEqualTo(Health.of(800));
     }
 }

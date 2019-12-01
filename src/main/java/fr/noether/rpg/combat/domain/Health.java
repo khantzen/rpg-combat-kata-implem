@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Health {
     public static final Health ZERO = of(0);
     public static final Health THOUSAND = of(1000);
+    public static final Health HUNDRED = of(100);
 
     private final int value;
 
