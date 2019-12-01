@@ -42,7 +42,7 @@ public class Health {
         return Health.of(newHealthValue);
     }
 
-    public Health add(Health heal) {
+    Health add(Health heal) {
         return Health.of(this.value + heal.value);
     }
 }

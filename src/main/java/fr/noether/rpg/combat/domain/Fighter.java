@@ -1,12 +1,16 @@
 package fr.noether.rpg.combat.domain;
 
 public class Fighter {
+    private final Distance range;
     public Health health;
     public Level level;
+    public Coord position;
 
-    public Fighter() {
+    public Fighter(Distance range) {
         this.health = Health.THOUSAND;
         this.level = Level.ONE;
+        this.range = range;
+        this.position = Coord.of(0);
     }
 
     public boolean isAlive() {
@@ -24,8 +28,13 @@ public class Fighter {
 
     public void attack(Fighter target) {
         if (this != target) {
-            float damageModifier = Level.modifier(level, target.level);
-            target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
+            Distance distanceBetweenAttackerAndTarget =
+                    this.position.distanceFrom(target.position);
+
+            if (distanceBetweenAttackerAndTarget.isLowerThan(range)) {
+                float damageModifier = Level.modifier(level, target.level);
+                target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
+            }
         }
     }
 }
