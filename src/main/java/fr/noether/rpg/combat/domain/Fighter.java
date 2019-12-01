@@ -27,12 +27,7 @@ public class Fighter {
     }
 
     public void heal(Fighter target) {
-        if (this == target) {
-            this.receiveHeal(Health.HUNDRED);
-            return;
-        }
-
-        if (this.isAlliedTo(target)) {
+        if (this == target || this.isAlliedTo(target)) {
             target.receiveHeal(Health.HUNDRED);
         }
     }
