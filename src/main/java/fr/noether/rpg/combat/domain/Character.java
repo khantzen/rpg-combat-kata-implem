@@ -24,6 +24,8 @@ public class Character {
     }
 
     public void attack(Character target) {
-        target.takeDamage(Damage.HUNDRED);
+        if (this != target) {
+            target.takeDamage(Damage.HUNDRED);
+        }
     }
 }

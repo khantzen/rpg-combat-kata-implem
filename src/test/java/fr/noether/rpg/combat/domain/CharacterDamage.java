@@ -12,4 +12,11 @@ public class CharacterDamage {
         john.attack(louis);
         Assertions.assertThat(louis.health).isEqualTo(Health.of(900));
     }
+
+    @Test
+    public void cannot_be_inflicted_to_character_himself() {
+        Character john = new Character();
+        john.attack(john);
+        Assertions.assertThat(john.health).isEqualTo(Health.of(1000));
+    }
 }
