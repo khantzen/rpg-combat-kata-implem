@@ -27,14 +27,16 @@ public class Fighter {
     }
 
     public void attack(Fighter target) {
-        if (this != target) {
-            Distance distanceBetweenAttackerAndTarget =
-                    this.position.distanceFrom(target.position);
+        if (this == target) {
+            return;
+        }
 
-            if (distanceBetweenAttackerAndTarget.isLowerThan(range)) {
-                float damageModifier = Level.modifier(level, target.level);
-                target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
-            }
+        Distance distanceBetweenAttackerAndTarget =
+                this.position.distanceFrom(target.position);
+
+        if (distanceBetweenAttackerAndTarget.isLowerThan(range)) {
+            float damageModifier = Level.modifier(level, target.level);
+            target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
         }
     }
 }
