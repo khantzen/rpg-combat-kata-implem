@@ -11,7 +11,7 @@ public class Distance {
         return new Distance(range);
     }
 
-    public boolean isLowerThan(Distance target) {
-        return this.value < target.value;
+    public boolean isLessOrEqualThan(Distance target) {
+        return this.value <= target.value;
     }
 }

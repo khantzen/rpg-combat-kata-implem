@@ -34,7 +34,7 @@ public class Fighter {
         Distance distanceBetweenAttackerAndTarget =
                 this.position.distanceFrom(target.position);
 
-        if (distanceBetweenAttackerAndTarget.isLowerThan(range)) {
+        if (distanceBetweenAttackerAndTarget.isLessOrEqualThan(range)) {
             float damageModifier = Level.modifier(level, target.level);
             target.takeDamage(Damage.HUNDRED.applyModifier(damageModifier));
         }
