@@ -22,4 +22,8 @@ public class Character {
     public void receiveHeal(Health heal) {
         this.health = Health.minimumOf(Health.THOUSAND, this.health.add(heal));
     }
+
+    public void attack(Character target) {
+        target.takeDamage(Damage.HUNDRED);
+    }
 }

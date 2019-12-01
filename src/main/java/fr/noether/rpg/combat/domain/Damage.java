@@ -1,6 +1,7 @@
 package fr.noether.rpg.combat.domain;
 
 public class Damage {
+    public static final Damage HUNDRED = of(100);
     private final int value;
 
     private Damage(int value) {
