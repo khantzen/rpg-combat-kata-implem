@@ -36,4 +36,12 @@ public class TestCharacter {
         character.takeDamage(Damage.of(342));
         Assertions.assertThat(character.health).isEqualTo(Health.of(658));
     }
+
+    @Test
+    public void should_receive_heal() {
+        Character character = new Character();
+        character.takeDamage(Damage.of(300));
+        character.receiveHeal(Health.of(200));
+        Assertions.assertThat(character.health).isEqualTo(Health.of(900));
+    }
 }

@@ -15,6 +15,11 @@ public class Character {
     }
 
     public void takeDamage(Damage damage) {
-        this.health = this.health.remove(damage.toHealth());
+        Health healthToRemove = damage.toHealth();
+        this.health = this.health.remove(healthToRemove);
+    }
+
+    public void receiveHeal(Health heal) {
+        this.health = this.health.add(heal);
     }
 }

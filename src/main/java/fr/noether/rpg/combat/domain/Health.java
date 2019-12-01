@@ -33,4 +33,8 @@ public class Health {
         int newHealthValue = Math.max(this.value - toHealth.value, 0);
         return Health.of(newHealthValue);
     }
+
+    public Health add(Health heal) {
+        return Health.of(this.value + heal.value);
+    }
 }
