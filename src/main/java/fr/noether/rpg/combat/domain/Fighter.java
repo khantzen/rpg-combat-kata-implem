@@ -6,7 +6,10 @@ public class Fighter {
     public Level level;
     public Coord position;
 
-    public Fighter(Distance range) {
+    public Fighter(
+            Distance range,
+            Factions unit
+    ) {
         this.health = Health.THOUSAND;
         this.level = Level.ONE;
         this.range = range;
