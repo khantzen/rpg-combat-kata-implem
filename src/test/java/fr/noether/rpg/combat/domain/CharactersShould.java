@@ -10,4 +10,10 @@ public class CharactersShould {
         Characters characters = new Characters();
         Assertions.assertThat(characters.health).isEqualTo(Health.of(1000));
     }
+
+    @Test
+    public void start_at_level_01() {
+        Characters characters = new Characters();
+        Assertions.assertThat(characters.level).isEqualTo(Level.ONE);
+    }
 }
