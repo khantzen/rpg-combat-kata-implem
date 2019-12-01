@@ -3,7 +3,7 @@ package fr.noether.rpg.combat.domain;
 public class Distance {
     private final int value;
 
-    public Distance(int value) {
+    private Distance(int value) {
         this.value = value;
     }
 
@@ -11,7 +11,7 @@ public class Distance {
         return new Distance(range);
     }
 
-    public boolean isLessOrEqualThan(Distance target) {
+    boolean isLessOrEqualThan(Distance target) {
         return this.value <= target.value;
     }
 }
