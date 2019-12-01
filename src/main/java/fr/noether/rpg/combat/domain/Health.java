@@ -29,7 +29,8 @@ public class Health {
         return Objects.hash(value);
     }
 
-    public Health remove(Health toHealth) {
-        return Health.of(Math.max(this.value - toHealth.value, 0));
+    Health remove(Health toHealth) {
+        int newHealthValue = Math.max(this.value - toHealth.value, 0);
+        return Health.of(newHealthValue);
     }
 }
