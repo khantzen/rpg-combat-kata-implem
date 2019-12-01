@@ -29,4 +29,11 @@ public class TestCharacter {
         character.takeDamage(Damage.of(1001));
         Assertions.assertThat(character.isAlive()).isFalse();
     }
+
+    @Test
+    public void has_health_remove_when_he_receive_damage() {
+        Character character = new Character();
+        character.takeDamage(Damage.of(342));
+        Assertions.assertThat(character.health).isEqualTo(Health.of(658));
+    }
 }

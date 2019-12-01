@@ -28,4 +28,8 @@ public class Health {
     public int hashCode() {
         return Objects.hash(value);
     }
+
+    public Health remove(Health toHealth) {
+        return Health.of(Math.max(this.value - toHealth.value, 0));
+    }
 }

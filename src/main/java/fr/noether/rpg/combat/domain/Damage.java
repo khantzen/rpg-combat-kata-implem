@@ -1,7 +1,17 @@
 package fr.noether.rpg.combat.domain;
 
 public class Damage {
-    public static Damage of(int i) {
-        return null;
+    private final int value;
+
+    private Damage(int value) {
+        this.value = value;
+    }
+
+    public static Damage of(int value) {
+        return new Damage(value);
+    }
+
+    Health toHealth() {
+        return Health.of(value);
     }
 }
