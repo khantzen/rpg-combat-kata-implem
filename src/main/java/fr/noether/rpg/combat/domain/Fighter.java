@@ -23,7 +23,9 @@ public class Fighter {
     }
 
     public void receiveHeal(Health heal) {
-        this.health = Health.minimumOf(Health.THOUSAND, this.health.add(heal));
+        if (this.isAlive()) {
+            this.health = Health.minimumOf(Health.THOUSAND, this.health.add(heal));
+        }
     }
 
     public void attack(Fighter target) {

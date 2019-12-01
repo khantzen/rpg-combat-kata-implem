@@ -52,4 +52,12 @@ public class FighterShould {
         fighter.receiveHeal(Health.of(300));
         Assertions.assertThat(fighter.health).isEqualTo(Health.of(1000));
     }
+
+    @Test
+    public void cannot_be_healed_when_dead() {
+        Fighter fighter = new Fighter(Distance.of(2));
+        fighter.takeDamage(Damage.of(1300));
+        fighter.receiveHeal(Health.of(300));
+        Assertions.assertThat(fighter.isAlive()).isFalse();
+    }
 }
