@@ -44,4 +44,12 @@ public class TestCharacter {
         character.receiveHeal(Health.of(200));
         Assertions.assertThat(character.health).isEqualTo(Health.of(900));
     }
+
+    @Test
+    public void cannot_be_healed_over_1000() {
+        Character character = new Character();
+        character.takeDamage(Damage.of(200));
+        character.receiveHeal(Health.of(300));
+        Assertions.assertThat(character.health).isEqualTo(Health.of(1000));
+    }
 }

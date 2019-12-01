@@ -20,6 +20,6 @@ public class Character {
     }
 
     public void receiveHeal(Health heal) {
-        this.health = this.health.add(heal);
+        this.health = Health.minimumOf(Health.THOUSAND, this.health.add(heal));
     }
 }

@@ -16,6 +16,14 @@ public class Health {
         return new Health(value);
     }
 
+    static Health minimumOf(Health first, Health second) {
+        Health minimum = first;
+        if (first.value > second.value) {
+            minimum = second;
+        }
+        return minimum;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
