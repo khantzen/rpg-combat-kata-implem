@@ -29,6 +29,7 @@ public class Fighter {
     public void heal(Fighter target) {
         if (this == target) {
             this.receiveHeal(Health.HUNDRED);
+            return;
         }
 
         if (this.isAlliedTo(target)) {

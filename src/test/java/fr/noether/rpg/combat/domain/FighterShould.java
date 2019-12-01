@@ -101,10 +101,13 @@ public class FighterShould {
 
         louis.takeDamage(Damage.of(200));
         henry.takeDamage(Damage.of(355));
+        john.takeDamage(Damage.of(800));
 
         john.heal(louis);
         john.heal(henry);
+        john.heal(john);
 
+        assertThat(john.health).isEqualTo(Health.of(300));
         assertThat(louis.health).isEqualTo(Health.of(800));
         assertThat(henry.health).isEqualTo(Health.of(645));
     }
